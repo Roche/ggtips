@@ -51,7 +51,8 @@ getTooltips <- function(plot,
                         plotScales,
                         g,
                         callback,
-                        addAttributes = FALSE) {
+                        addAttributes = FALSE,
+                        wrap = FALSE) {
   gb <- ggplot2::ggplot_build(plot)
   tooltipData <- getTooltipData(
     plot,
@@ -89,7 +90,7 @@ getTooltips <- function(plot,
         # Geometry not supported
         return(NULL)
       }
-      tooltipContents <- tooltipDataToText(df)
+      tooltipContents <- tooltipDataToText(df, wrap = wrap)
       coords <- lapply(layoutNames, function(layoutName) {
         getGeomCoordsForGrob(
           g,
@@ -166,7 +167,8 @@ formals(saveAndGetTooltips) <- c(
     g = ,
     ggPlotObj = NULL,
     callback = NULL,
-    addAttributes = FALSE
+    addAttributes = FALSE,
+    wrap = FALSE
   )
 )
 body(saveAndGetTooltips)[[length(body(saveAndGetTooltips))]] <- quote(
@@ -176,6 +178,7 @@ body(saveAndGetTooltips)[[length(body(saveAndGetTooltips))]] <- quote(
     plotScales = plotScales,
     g = g,
     callback = callback,
-    addAttributes = addAttributes
+    addAttributes = addAttributes,
+    wrap = wrap
   )
 )

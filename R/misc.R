@@ -168,14 +168,38 @@ getStringWidth <- function(string) {
 #'
 #' @return numeric (floating-point) value.
 getCharWidth <- function(char) {
-  charWidths <- c(
-    "ijlI()[].,| " = 0.5,
-    "rt" = 0.7,
-    "wBCDGHKNOQRU" = 1.2,
-    "mMW" = 1.5
+  switch(
+    char,
+    "i" = 0.5,
+    "j" = 0.5,
+    "l" = 0.5,
+    "I" = 0.5,
+    "(" = 0.5,
+    ")" = 0.5,
+    "[" = 0.5,
+    "]" = 0.5,
+    "." = 0.5,
+    "," = 0.5,
+    "|" = 0.5,
+    "r" = 0.7,
+    "t" = 0.7,
+    "w" = 1.2,
+    "B" = 1.2,
+    "C" = 1.2,
+    "D" = 1.2,
+    "G" = 1.2,
+    "H" = 1.2,
+    "K" = 1.2,
+    "N" = 1.2,
+    "O" = 1.2,
+    "Q" = 1.2,
+    "R" = 1.2,
+    "U" = 1.2,
+    "m" = 1.5,
+    "M" = 1.5,
+    "W" = 1.5,
+    1.0
   )
-  whichType <- grep(char, names(charWidths), fixed = TRUE)
-  `if`(length(whichType) == 0, 1, unname(charWidths[whichType]))
 }
 
 #' load Front-End dependencies (use this function in any rendered content and

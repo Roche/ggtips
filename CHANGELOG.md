@@ -1,7 +1,9 @@
-## 0.3.6
+## 0.4.0
 ### Bugs
 * add addAttributes parameter to getSvgAndTooltipdata to fix unused argument errors
 * Fix the ordering of plot data for some trellises
+* Optimize the workflow
+* Bump up minimal required versions of R and ggplot2
 
 ## 0.3.5
 ### Features
